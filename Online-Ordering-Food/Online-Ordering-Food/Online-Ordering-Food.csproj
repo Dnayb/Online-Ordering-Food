@@ -173,6 +173,13 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="regestration\css\font-awesome.css" />
+    <Content Include="regestration\css\style.css" />
+    <Content Include="regestration\fonts\fontawesome-webfont.svg" />
+    <Content Include="regestration\images\bg1.jpg" />
+    <Content Include="regestration\images\profile3.png" />
+    <Content Include="regestration\index.html" />
+    <Content Include="regestration\w3layouts-License.txt" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <EntityDeploy Include="Models\Food.edmx">
@@ -192,6 +199,11 @@
       <DependentUpon>Food.edmx</DependentUpon>
       <LastGenOutput>Food.cs</LastGenOutput>
     </Content>
+    <Content Include="regestration\fonts\fontawesome-webfont.eot" />
+    <Content Include="regestration\fonts\fontawesome-webfont.ttf" />
+    <Content Include="regestration\fonts\fontawesome-webfont.woff" />
+    <Content Include="regestration\fonts\fontawesome-webfont.woff2" />
+    <Content Include="regestration\fonts\FontAwesome.otf" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -214,6 +226,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Resturant\Regestration.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Uploads\" />

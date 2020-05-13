@@ -241,7 +241,6 @@ C:\Online-Ordering-Food\Online-Ordering-Food\Online-Ordering-Food\bin\System.Web
 C:\Online-Ordering-Food\Online-Ordering-Food\Online-Ordering-Food\bin\Newtonsoft.Json.xml
 C:\Online-Ordering-Food\Online-Ordering-Food\Online-Ordering-Food\bin\Antlr3.Runtime.pdb
 C:\Online-Ordering-Food\Online-Ordering-Food\Online-Ordering-Food\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Online-Ordering-Food\Online-Ordering-Food\Online-Ordering-Food\obj\Debug\Online-Ordering-Food.csprojAssemblyReference.cache
 C:\Online-Ordering-Food\Online-Ordering-Food\Online-Ordering-Food\obj\Debug\Online-Ordering-Food.csproj.CoreCompileInputs.cache
 C:\Online-Ordering-Food\Online-Ordering-Food\Online-Ordering-Food\obj\Debug\Online-Ordering-Food.csproj.CopyComplete
 C:\Online-Ordering-Food\Online-Ordering-Food\Online-Ordering-Food\obj\Debug\Online-Ordering-Food.dll
