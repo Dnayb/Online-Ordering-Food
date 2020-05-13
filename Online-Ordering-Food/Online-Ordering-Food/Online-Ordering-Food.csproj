@@ -136,6 +136,7 @@
     <Compile Include="Models\Category.cs">
       <DependentUpon>Food.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CustomizRegistration.cs" />
     <Compile Include="Models\Food.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
