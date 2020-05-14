@@ -12,6 +12,17 @@ namespace Online_Ordering_Food.Controllers
 {
     public class ResturantController : Controller
     {
+        //Home Page:
+        public ActionResult Home()
+        {
+            return View();
+        }
+
+        public ActionResult OOFHome()
+        {
+            return View();
+        }
+
         //Regestration Page
         [HttpGet]
         [ActionName("Regestration")]
