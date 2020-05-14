@@ -245,4 +245,3 @@ C:\Online-Ordering-Food\Online-Ordering-Food\Online-Ordering-Food\obj\Debug\Onli
 C:\Online-Ordering-Food\Online-Ordering-Food\Online-Ordering-Food\obj\Debug\Online-Ordering-Food.csproj.CopyComplete
 C:\Online-Ordering-Food\Online-Ordering-Food\Online-Ordering-Food\obj\Debug\Online-Ordering-Food.dll
 C:\Online-Ordering-Food\Online-Ordering-Food\Online-Ordering-Food\obj\Debug\Online-Ordering-Food.pdb
-C:\Online-Ordering-Food\Online-Ordering-Food\Online-Ordering-Food\obj\Debug\Online-Ordering-Food.csprojAssemblyReference.cache

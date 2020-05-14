@@ -173,6 +173,13 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="login\css\font-awesome.css" />
+    <Content Include="login\css\style.css" />
+    <Content Include="login\fonts\fontawesome-webfont.svg" />
+    <Content Include="login\images\bg1.jpg" />
+    <Content Include="login\images\profile3.png" />
+    <Content Include="login\index.html" />
+    <Content Include="login\w3layouts-License.txt" />
     <Content Include="regestration\css\font-awesome.css" />
     <Content Include="regestration\css\style.css" />
     <Content Include="regestration\fonts\fontawesome-webfont.svg" />
@@ -204,6 +211,11 @@
     <Content Include="regestration\fonts\fontawesome-webfont.woff" />
     <Content Include="regestration\fonts\fontawesome-webfont.woff2" />
     <Content Include="regestration\fonts\FontAwesome.otf" />
+    <Content Include="login\fonts\fontawesome-webfont.eot" />
+    <Content Include="login\fonts\fontawesome-webfont.ttf" />
+    <Content Include="login\fonts\fontawesome-webfont.woff" />
+    <Content Include="login\fonts\fontawesome-webfont.woff2" />
+    <Content Include="login\fonts\FontAwesome.otf" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -227,6 +239,7 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Resturant\Regestration.cshtml" />
+    <Content Include="Views\Resturant\LogIn.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Uploads\" />
