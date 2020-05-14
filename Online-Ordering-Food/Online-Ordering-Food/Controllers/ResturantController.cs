@@ -43,5 +43,37 @@ namespace Online_Ordering_Food.Controllers
             ViewBag.successmessage = "Registration SuccessFull";
             return View("Regestration");
         }
+
+        //login page
+        [HttpGet]
+        [ActionName("LogIn")]
+        public ActionResult LogIn_Get()
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+        [ActionName("LogIn")]
+        public ActionResult LogIn_Post(UserInfo user)
+        {
+            ResturantEntities db = new ResturantEntities();
+
+            if ((user.username == "admin") && (user.Password == "admin1234"))
+            {
+                ViewBag.message = "Welcom admin";
+                return View(user);
+            }
+            else if (db.UserInfoes.Any(x => x.username == user.username) && db.UserInfoes.Any(y => y.Password == user.Password))
+            {
+                ViewBag.message = "Welcom " + user.username;
+                return View(user);
+            }
+            else
+            {
+                ViewBag.message = "username or Password is INCORRECT";
+                return View(user);
+            }
+        }
     }
 }
