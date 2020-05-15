@@ -84,5 +84,12 @@ namespace Online_Ordering_Food.Controllers
                 return View(user);
             }
         }
+
+
+        // admin pages
+        public ActionResult AdminDashboard()
+        {
+            return View();
+        }
     }
 }
