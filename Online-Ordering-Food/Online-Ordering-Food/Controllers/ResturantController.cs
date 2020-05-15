@@ -50,9 +50,7 @@ namespace Online_Ordering_Food.Controllers
                 }
 
             }
-            ModelState.Clear();
-            ViewBag.successmessage = "Registration SuccessFull";
-            return View("Regestration");
+            return RedirectToAction("LogIn");
         }
 
         //login page

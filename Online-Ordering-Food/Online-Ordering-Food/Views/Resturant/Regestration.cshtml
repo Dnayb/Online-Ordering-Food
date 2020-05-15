@@ -25,8 +25,26 @@
     <link href="//fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     <link href="//fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <!--//online-fonts -->
+    <link rel="stylesheet" href="~/HomeStuff/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/HomeStuff/css/main.css">
+    <link rel="stylesheet" href="~/HomeStuff/css/red-color.css">
 </head>
 <body>
+    <header class="stick">
+        <div class="topbar">
+            <div class="container">
+                <div class="topbar-register">
+                    <a class="log-popup-btn" href="#" itemprop="url">MENU</a>
+                </div>
+                <div class="topbar-register">
+                    <a class="log-popup-btn" href="#" itemprop="url">@Html.ActionLink("HOME", "Home")</a>
+                </div>
+            </div>
+        </div><!-- Topbar -->
+        <div class="logo-menu-sec">
+        </div><!-- Logo Menu Section -->
+    </header>
+
     <div class="header">
         <h1>user profile form</h1>
     </div>
@@ -97,11 +115,6 @@
                 }
             </script>
 
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-2">
-                    <label class="label-success">@ViewBag.successmessage</label>
-                </div>
-            </div>
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-2">
