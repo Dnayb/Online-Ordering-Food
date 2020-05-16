@@ -70,13 +70,11 @@ namespace Online_Ordering_Food.Controllers
 
             if ((user.username == "admin") && (user.Password == "admin1234"))
             {
-                ViewBag.message = "Welcom admin";
-                return View(user);
+                return RedirectToAction("AdminDashboard");
             }
             else if (db.UserInfoes.Any(x => x.username == user.username) && db.UserInfoes.Any(y => y.Password == user.Password))
             {
-                ViewBag.message = "Welcom " + user.username;
-                return View(user);
+                return RedirectToAction("OOFHome");
             }
             else
             {
