@@ -470,6 +470,8 @@
     <Content Include="Views\Resturant\Home.cshtml" />
     <Content Include="Views\Resturant\OOFHome.cshtml" />
     <Content Include="Views\Resturant\AdminDashboard.cshtml" />
+    <Content Include="Views\Shared\_Layout1.cshtml" />
+    <Content Include="Views\Shared\_Layout2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Uploads\" />
