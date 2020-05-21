@@ -7,11 +7,88 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Online_Ordering_Food.Models;
+using System.IO;
 
 namespace Online_Ordering_Food.Controllers
 {
     public class ResturantController : Controller
     {
+        private ResturantEntities db = new ResturantEntities();
+
+        // Menu page
+        public ActionResult Menu()
+        {
+
+            var products = db.Products.Include(p => p.Category);
+            return View(products.ToList());
+        }
+
+        [HttpPost]
+        public ActionResult Menu(string SearchTerm)
+        {
+            List<Product> products;
+            if (string.IsNullOrEmpty(SearchTerm))
+            {
+                products = db.Products.Include(p => p.Category).ToList();
+            }
+            else
+            {
+                products = db.Products.Include(p => p.Category).Where(a => a.Category.Category_Name.ToLower().StartsWith(SearchTerm.ToLower())).ToList();
+            }
+            return View(products);
+        }
+
+        public ActionResult MenuDetails(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Product product = db.Products.Find(id);
+            if (product == null)
+            {
+                return HttpNotFound();
+            }
+            return View(product);
+        }
+
+        public ActionResult OOFMenu()
+        {
+
+            var products = db.Products.Include(p => p.Category);
+            return View(products.ToList());
+        }
+
+        [HttpPost]
+        public ActionResult OOFMenu(string SearchTerm)
+        {
+            List<Product> products;
+            if (string.IsNullOrEmpty(SearchTerm))
+            {
+                products = db.Products.Include(p => p.Category).ToList();
+            }
+            else
+            {
+                products = db.Products.Include(p => p.Category).Where(a => a.Category.Category_Name.ToLower().StartsWith(SearchTerm.ToLower())).ToList();
+            }
+            return View(products);
+        }
+
+        public ActionResult OOFMenuDetails(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Product product = db.Products.Find(id);
+            if (product == null)
+            {
+                return HttpNotFound();
+            }
+            return View(product);
+        }
+
+
         //Home Page:
         public ActionResult Home()
         {
@@ -88,6 +165,17 @@ namespace Online_Ordering_Food.Controllers
         public ActionResult AdminDashboard()
         {
             return View();
+        }
+
+
+        //
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
         }
     }
 }
