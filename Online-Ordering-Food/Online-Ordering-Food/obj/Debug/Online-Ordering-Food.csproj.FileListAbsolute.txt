@@ -328,4 +328,3 @@ C:\Online-Ordering-Food\Online-Ordering-Food\Online-Ordering-Food\bin\roslyn\vbc
 C:\Online-Ordering-Food\Online-Ordering-Food\Online-Ordering-Food\bin\roslyn\vbc.rsp
 C:\Online-Ordering-Food\Online-Ordering-Food\Online-Ordering-Food\bin\roslyn\VBCSCompiler.exe
 C:\Online-Ordering-Food\Online-Ordering-Food\Online-Ordering-Food\bin\roslyn\VBCSCompiler.exe.config
-C:\Online-Ordering-Food\Online-Ordering-Food\Online-Ordering-Food\obj\Debug\Online-Ordering-Food.csprojAssemblyReference.cache

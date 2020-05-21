@@ -1,0 +1,80 @@
+﻿@model Online_Ordering_Food.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+
+
+<div>
+    <h4>Product</h4>
+    <hr />
+    <div style="display:inline-block">
+        <ul>
+            <li>
+                @Html.DisplayFor(model => model.Name)
+            </li>
+            <li>
+                <img src="~/Uploads/@Html.DisplayFor(model => model.Image)"
+                     class="thumbnail"
+                     style="width:150px; height:150px;" />
+            </li>
+            <li>
+                <p style="color:red;">Description:</p><p> @Html.DisplayFor(model => model.Description)</p>
+            </li>
+            <li>
+                <p style="color:red;">Price:</p> <p>@Html.DisplayFor(model => model.Price)</p>
+            </li>
+            <li>
+                <p style="color:red;">Category:</p> <p>@Html.DisplayFor(model => model.Category.Category_Name)</p>
+            </li>
+        </ul>
+    </div>
+    @*<dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Price)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Price)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Image)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Image)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Category.Category_Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Category.Category_Name)
+            </dd>
+
+        </dl>*@
+</div>
+<p>
+    <hr />
+    @Html.ActionLink("Back to Menu", "Menu")
+</p>
