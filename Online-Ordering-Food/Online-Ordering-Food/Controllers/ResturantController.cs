@@ -167,6 +167,43 @@ namespace Online_Ordering_Food.Controllers
             return View();
         }
 
+        //ProductDetails Page
+        public ActionResult ProductDetails()
+        {
+
+            var products = db.Products.Include(p => p.Category);
+            return View(products.ToList());
+        }
+
+        [HttpPost]
+        public ActionResult ProductDetails(string SearchTerm)
+        {
+            List<Product> products;
+            if (string.IsNullOrEmpty(SearchTerm))
+            {
+                products = db.Products.Include(p => p.Category).ToList();
+            }
+            else
+            {
+                products = db.Products.Include(p => p.Category).Where(a => a.Category.Category_Name.ToLower().StartsWith(SearchTerm.ToLower())).ToList();
+            }
+            return View(products);
+        }
+        // GET: Products/Details/5
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Product product = db.Products.Find(id);
+            if (product == null)
+            {
+                return HttpNotFound();
+            }
+            return View(product);
+        }
+
 
         //
         protected override void Dispose(bool disposing)
