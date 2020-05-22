@@ -42,17 +42,22 @@
                         <li>
                             @Html.DisplayFor(modelItem => item.Name)
                         </li>
+
                         <li>
                             <img src="~/Uploads/@Html.DisplayFor(modelItem => item.Image)"
                                  class="thumbnail"
-                                 style="width:150px; height:150px;" />
+                                 style="width:200px; height:200px;" />
                         </li>
                         <li>
-                            <a class="btn btn-primary btn-sm pull-left" href="@Url.Action("Details", "OOFMenuDetails", new { id = item.Id})">Details</a>
+                            <p style="color:red;">Price : @Html.DisplayFor(model => item.Price)</p>
+                        </li>
+                        <li>
+                            @Html.ActionLink("Details", "OOFMenuDetails", new { id = item.Id }, new { @class = "btn btn-primary btn-sm pull-left" })
                         </li>
                         <br />
+                        <br />
                         <li>
-                            <a class="btn btn-primary btn-sm pull-left" href="@Url.Action("AddToCart", "OOFMenu", new { id = item.Id})">ADD TO CART</a>
+                            @Html.ActionLink("AddToCart", "OOFMenu", new { id = item.Id }, new { @class = "btn btn-primary btn-sm pull-left" })
                         </li>
                     </ul>
                 </div>
@@ -60,4 +65,3 @@
         }
     </div>
 </div>
-
