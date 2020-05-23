@@ -204,6 +204,30 @@ namespace Online_Ordering_Food.Controllers
             return View(product);
         }
 
+        // CreateProduct page
+        public ActionResult Create()
+        {
+            ViewBag.Category_id = new SelectList(db.Categories, "Id", "Category_Name");
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "Id,Name,Price,Image,Description,Category_id")] Product product, HttpPostedFileBase upload)
+        {
+            if (ModelState.IsValid)
+            {
+                string path = Path.Combine(Server.MapPath("~/Uploads"), upload.FileName);
+                upload.SaveAs(path);
+                product.Image = upload.FileName;
+                db.Products.Add(product);
+                db.SaveChanges();
+                return RedirectToAction("ProductDetails");
+            }
+
+            ViewBag.Category_id = new SelectList(db.Categories, "Id", "Category_Name", product.Category_id);
+            return View(product);
+        }
 
         //
         protected override void Dispose(bool disposing)
