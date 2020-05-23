@@ -478,6 +478,7 @@
     <Content Include="Views\Resturant\OOFMenuDetails.cshtml" />
     <Content Include="Views\Resturant\ProductDetails.cshtml" />
     <Content Include="Views\Resturant\Details.cshtml" />
+    <Content Include="Views\Resturant\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Uploads\" />
