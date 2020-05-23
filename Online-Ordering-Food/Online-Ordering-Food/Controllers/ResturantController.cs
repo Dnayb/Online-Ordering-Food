@@ -229,6 +229,63 @@ namespace Online_Ordering_Food.Controllers
             return View(product);
         }
 
+        // UpdateProduct Page
+        public ActionResult UpdateProduct()
+        {
+
+            var products = db.Products.Include(p => p.Category);
+            return View(products.ToList());
+        }
+
+        [HttpPost]
+        public ActionResult UpdateProduct(string SearchTerm)
+        {
+            List<Product> products;
+            if (string.IsNullOrEmpty(SearchTerm))
+            {
+                products = db.Products.Include(p => p.Category).ToList();
+            }
+            else
+            {
+                products = db.Products.Include(p => p.Category).Where(a => a.Category.Category_Name.ToLower().StartsWith(SearchTerm.ToLower())).ToList();
+            }
+            return View(products);
+        }
+
+        // GET: Products/Edit/5
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Product product = db.Products.Find(id);
+            if (product == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.Category_id = new SelectList(db.Categories, "Id", "Category_Name", product.Category_id);
+            return View(product);
+        }
+
+        // POST: Products/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "Id,Name,Price,Image,Description,Category_id")] Product product, HttpPostedFileBase upload)
+        {
+            if (ModelState.IsValid)
+            {
+                string path = Path.Combine(Server.MapPath("~/Uploads"), upload.FileName);
+                upload.SaveAs(path);
+                product.Image = upload.FileName;
+                db.Entry(product).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("ProductDetails");
+            }
+            ViewBag.Category_id = new SelectList(db.Categories, "Id", "Category_Name", product.Category_id);
+            return View(product);
+        }
+
         //
         protected override void Dispose(bool disposing)
         {
