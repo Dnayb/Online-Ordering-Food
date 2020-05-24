@@ -481,6 +481,8 @@
     <Content Include="Views\Resturant\Create.cshtml" />
     <Content Include="Views\Resturant\UpdateProduct.cshtml" />
     <Content Include="Views\Resturant\Edit.cshtml" />
+    <Content Include="Views\Resturant\DeleteProduct.cshtml" />
+    <Content Include="Views\Resturant\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Uploads\" />
