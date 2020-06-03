@@ -72,7 +72,13 @@
         <div class="responsive-menu">
             <span class="menu-close red-bg brd-rd3"><i class="fa fa-close"></i></span>
             <div class="topbar-register">
-                <a class="log-popup-btn" href="#" title="Login" itemprop="url">LOGIN</a> / <a class="sign-popup-btn" href="#" title="Register" itemprop="url">REGISTER</a>
+                <a class="log-popup-btn" href="#" title="Login" itemprop="url">@Html.ActionLink("LOGOUT", "Home")</a>/
+            </div>
+            <div class="topbar-register">
+                <a class="log-popup-btn" href="#" itemprop="url">@Html.ActionLink("MENU", "OOFMenu")</a>/
+            </div>
+            <div class="topbar-register">
+                <a class="log-popup-btn" href="#" itemprop="url">@Html.ActionLink("HOME", "OOFHome")</a>
             </div>
         </div><!-- Responsive Menu -->
     </div><!-- Responsive Header -->
