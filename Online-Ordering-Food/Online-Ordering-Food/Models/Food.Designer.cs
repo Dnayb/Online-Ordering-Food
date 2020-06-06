@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\user\Downloads\New folder (2)\fainal project\Ordering-Food\Online-Ordering-Food\Online-Ordering-Food\Models\Food.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Online-Ordering-Food\Online-Ordering-Food\Online-Ordering-Food\Models\Food.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

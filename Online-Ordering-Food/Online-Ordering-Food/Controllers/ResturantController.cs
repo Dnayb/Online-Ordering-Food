@@ -8,12 +8,43 @@ using System.Web;
 using System.Web.Mvc;
 using Online_Ordering_Food.Models;
 using System.IO;
+using Online_Ordering_Food.ViewModel;
 
 namespace Online_Ordering_Food.Controllers
 {
     public class ResturantController : Controller
     {
         private ResturantEntities db = new ResturantEntities();
+
+        public ActionResult OOFMenu()
+        {
+            var viewmodel = new ProductCart()
+            {
+                products = db.Products.Include(p => p.Category).ToList(),
+                carts = db.Carts.Include(c => c.Product).ToList()
+            };
+            //var products = db.Products.Include(p => p.Category);
+            return View(viewmodel);
+        }
+        [HttpPost]
+        public ActionResult OOFMenu(string SearchTerm)
+        {
+
+            var viewmodel = new ProductCart()
+            {
+                products = db.Products.Include(p => p.Category).ToList(),
+                carts = db.Carts.Include(c => c.Product).ToList()
+            };
+            if (string.IsNullOrEmpty(SearchTerm))
+            {
+                viewmodel.products = db.Products.Include(p => p.Category).ToList();
+            }
+            else
+            {
+                viewmodel.products = db.Products.Include(p => p.Category).Where(a => a.Category.Category_Name.ToLower().StartsWith(SearchTerm.ToLower())).ToList();
+            }
+            return View(viewmodel);
+        }
 
         // Menu page
         public ActionResult Menu()
@@ -52,27 +83,27 @@ namespace Online_Ordering_Food.Controllers
             return View(product);
         }
 
-        public ActionResult OOFMenu()
-        {
+        //public ActionResult OOFMenu()
+        //{
 
-            var products = db.Products.Include(p => p.Category);
-            return View(products.ToList());
-        }
+        //    var products = db.Products.Include(p => p.Category);
+        //    return View(products.ToList());
+        //}
 
-        [HttpPost]
-        public ActionResult OOFMenu(string SearchTerm)
-        {
-            List<Product> products;
-            if (string.IsNullOrEmpty(SearchTerm))
-            {
-                products = db.Products.Include(p => p.Category).ToList();
-            }
-            else
-            {
-                products = db.Products.Include(p => p.Category).Where(a => a.Category.Category_Name.ToLower().StartsWith(SearchTerm.ToLower())).ToList();
-            }
-            return View(products);
-        }
+        //[HttpPost]
+        //public ActionResult OOFMenu(string SearchTerm)
+        //{
+        //    List<Product> products;
+        //    if (string.IsNullOrEmpty(SearchTerm))
+        //    {
+        //        products = db.Products.Include(p => p.Category).ToList();
+        //    }
+        //    else
+        //    {
+        //        products = db.Products.Include(p => p.Category).Where(a => a.Category.Category_Name.ToLower().StartsWith(SearchTerm.ToLower())).ToList();
+        //    }
+        //    return View(products);
+        //}
 
         public ActionResult OOFMenuDetails(int? id)
         {
@@ -330,10 +361,20 @@ namespace Online_Ordering_Food.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            Cart cart = db.Carts.Find(id);
             Product product = db.Products.Find(id);
-            db.Products.Remove(product);
-            db.SaveChanges();
-            return RedirectToAction("ProductDetails");
+            if (db.Carts.Find(id) != null)
+            {
+                db.Products.Remove(product);
+                db.Carts.Remove(cart);
+                db.SaveChanges();
+            }
+            else
+            {
+                db.Products.Remove(product);
+                db.SaveChanges();
+            }
+            return RedirectToAction("DeleteProduct");
         }
 
         //
@@ -344,6 +385,31 @@ namespace Online_Ordering_Food.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult AddToCart(int id)
+        {
+            var productInCart = new Cart();
+            var product = db.Carts.SingleOrDefault(c => c.product_id == id);
+            if (product != null)
+            {
+                return RedirectToAction("OOFMenu");
+            }
+            else
+            {
+                productInCart.product_id = id;
+                productInCart.added_at = DateTime.Now;
+                db.Carts.Add(productInCart);
+                db.SaveChanges();
+                return RedirectToAction("OOFMenu");
+            }
+        }
+        public ActionResult DeleteCartItem(int id)
+        {
+            var cartproduct = db.Carts.Single(Cart => Cart.product_id == id);
+            db.Carts.Remove(cartproduct);
+            db.SaveChanges();
+            return RedirectToAction("OOFMenu");
         }
     }
 }

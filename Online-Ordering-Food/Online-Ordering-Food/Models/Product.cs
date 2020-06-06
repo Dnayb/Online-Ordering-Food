@@ -22,5 +22,6 @@ namespace Online_Ordering_Food.Models
         public Nullable<int> Category_id { get; set; }
     
         public virtual Category Category { get; set; }
+        public virtual Cart Cart { get; set; }
     }
 }

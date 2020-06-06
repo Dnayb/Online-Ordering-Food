@@ -1,6 +1,5 @@
 ﻿
-@model IEnumerable<Online_Ordering_Food.Models.Product>
-
+@model Online_Ordering_Food.ViewModel.ProductCart
 @{
     ViewBag.Title = "OOFMenu";
     Layout = "~/Views/Shared/_Layout2.cshtml";
@@ -23,18 +22,15 @@
             </div>
         </div>
     </div>
-
 }
 
 <br />
 <br />
 
 
-
-
 <div class="container">
     <div class="row justify-content-center">
-        @foreach (var item in Model)
+        @foreach (var item in Model.products)
         {
             <div class="col-lg-2 col-sm-3 col-xs-6" style="padding-top:30px;padding-bottom:30px;text-align:center;">
                 <div style="display:inline-block;background-color:#f8f8f8;padding:5px;border-radius:3px;position:relative;">
@@ -57,11 +53,80 @@
                         <br />
                         <br />
                         <li>
-                            @Html.ActionLink("AddToCart", "OOFMenu", new { id = item.Id }, new { @class = "btn btn-primary btn-sm pull-left" })
+                            <a class="btn btn-primary btn-sm pull-left" href="@Url.Action("AddToCart", "Resturant", new { id = item.Id })">ADD TO CART</a>
                         </li>
                     </ul>
                 </div>
             </div>
         }
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="modal fade" data-keyboard="false" data-backdrop="static" id="CartModal" tabindex="-1">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Cart List</h4>
+                        </div>
+                        <div class="modal-body">
+
+                            @foreach (var item in Model.carts)
+                            {
+                                TimeSpan span = DateTime.Now - item.added_at;
+                                var x = "";
+                                if (span.Days == 0 && span.Hours == 0 && span.Minutes == 0)
+                                {
+                                    x = String.Format("{0} seconds", span.Seconds);
+                                }
+                                else if (span.Days == 0 && span.Hours == 0)
+                                {
+                                    x = String.Format("{0} minutes, {1} seconds", span.Minutes, span.Seconds);
+                                }
+
+                                else if (span.Days == 0)
+                                {
+                                    x = String.Format("{0} hours, {1} minutes, {2} seconds", span.Hours, span.Minutes, span.Seconds);
+                                }
+                                else
+                                {
+                                    x = String.Format("{0} days, {1} hours, {2} minutes, {3} seconds", span.Days, span.Hours, span.Minutes, span.Seconds);
+                                }
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-lg-1">
+                                            <a class="btn btn-primary btn-sm pull-right" href="@Url.Action("DeleteCartItem", "Resturant", new { id = item.product_id })">Remove</a>
+                                        </div>
+                                        <div class="col">
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Product.Name) /
+                                                        @Html.DisplayFor(modelItem => item.Product.Price)
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        @x  ago /
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            }
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
